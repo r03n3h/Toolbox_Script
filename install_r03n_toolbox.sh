@@ -33,6 +33,11 @@ while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
     ripgrep
     bat
     exa
+    gobuster
+    sqlmap
+    hcxtools
+    hcxpcaptool
+
 EOF
 )
 
