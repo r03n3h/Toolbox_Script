@@ -24,9 +24,7 @@ while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
     dex2jar
     python3pip
     tree
-    seclist 
     feroxbuster
-    mysql
     jq
     terminator
     cupp
@@ -35,13 +33,21 @@ while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
     exa
     gobuster
     sqlmap
-    hcxtools
-    hcxpcaptool
-
+    hcxtools 
 EOF
 )
 
 sudo apt-get install -y tig
+
+command -v locate seclists >/dev/null 2>&1 ||
+while true; do
+    read -p "SecLists from Daniel Miessler is the security tester's companion, do you wish to install this big list (do you have some time?) " yn
+    case $yn in
+        [Yy]* ) sudo apt install seclists  -y; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 echo python apps
 echo -e "\n"
