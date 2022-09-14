@@ -22,7 +22,7 @@ while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
     adb
     apktool
     dex2jar
-    python3pip
+    python3-pip
     tree
     feroxbuster
     jq
