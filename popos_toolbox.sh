@@ -18,8 +18,8 @@ cd yubikey
 wget https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-latest-linux.AppImage
 wget https://developers.yubico.com/yubioath-desktop/Releases/yubioath-desktop-latest-linux.AppImage
 chmod +x ~/Tools/yubikey/*.AppImage
-sudo bash ~/Tools/yubikey/yubikey-manager-qt-1.2.4b-linux.AppImage
-sudo bash ~/Tools/yubikey/yubioath-desktop-5.1.0-linux.AppImage
+echo "Yubikey Tools are present at Tools/yubikey"
+
 
 #screenrec
 sudo wget -q -O - https://screenrec.com/download/pub.asc | sudo apt-key add -
