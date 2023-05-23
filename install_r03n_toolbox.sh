@@ -34,6 +34,9 @@ while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
     gobuster
     sqlmap
     hcxtools 
+    tmux
+    cargo
+    xclip
 EOF
 )
 
@@ -62,37 +65,10 @@ echo -e "\n"
 sleep 1
 export PATH=$PATH:/home/kali/.local/bin
 
-
-echo setting up shared folders 
-echo -e "\n"
-sleep 1
-sudo cat <<EOF | sudo tee /usr/local/sbin/mount-shared-folders
-vmware-hgfsclient | while read folder; do
-vmwpath="/mnt/hgfs/\${folder}"
-echo "[i] Mounting \${folder} (\${vmwpath})"
-sudo mkdir -p "\${vmwpath}"
-sudo umount -f "\${vmwpath}" 2>/dev/null
-sudo vmhgfs-fuse -o allow_other -o auto_unmount ".host:/\${folder}" "\${vmwpath}"
-done
-sleep 2s
-EOF
-
-echo setting permissions
+echo "Setting up your fancy hacking terminal"
 echo -e "\n"
 sleep 2
-sudo chmod +x /usr/local/sbin/mount-shared-folders
-
-echo mounting shared folders
-echo -e "\n"
-sleep 2
-sudo mount-shared-folders
-sudo mkdir ~/shares
-sudo /usr/bin/vmhgfs-fuse .host:/ ~/shares -o subtype=vmhgfs-fuse,allow_other
-
-echo setting up terminal
-echo -e "\n"
-sleep 2
-echo export PATH=$PATH:/home/kali/.local/bin >> ~/.zshrc
+echo export PATH=$PATH:~/.local/bin >> ~/.zshrc
 
 echo "alias grep='rg'" >> ~/.zshrc
 echo "alias ls='exa -alg --group-directories-first'" >> ~/.zshrc
@@ -103,4 +79,20 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 source ~/.zshrc
 
-echo Installation complete, happy hacking!
+echo "Setting op credmp's hed for easy host edit"
+sleep 1
+cargo install hed
+sleep 1
+echo export PATH=\$PATH:~/.cargo/bin >> ~/.zshrc
+echo export PATH=\$PATH:~/.cargo/bin >> ~/.bashrc
+
+echo "Setting up your special tmux hacking  setting"
+sleep 1
+cd
+git clone https://github.com/gpakosz/.tmux.git
+sleep 1
+ln -s -f .tmux/.tmux.conf
+sleep 1
+cp .tmux/.tmux.conf.local .
+
+echo "Installation complete, happy hacking!"
