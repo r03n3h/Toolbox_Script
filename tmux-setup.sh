@@ -16,6 +16,7 @@ echo export PATH=$PATH:/home/kali/.local/bin >> ~/.zshrc
 echo "alias grep='rg'" >> ~/.zshrc
 echo "alias ls='exa -alg --group-directories-first'" >> ~/.zshrc
 echo "alias cat='batcat'" >> ~/.zshrc
+echo "alias listener='sudo rlwrap nc -lvnp 4321'" >> ~/.zshrc
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
